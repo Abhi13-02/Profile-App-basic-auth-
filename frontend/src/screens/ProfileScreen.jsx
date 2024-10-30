@@ -69,14 +69,12 @@ const submitHandler = async (e) => {
     if (pic) {
       formData.append("pic", pic);
     }
-    console.log(name, email, password, pic, isAdmin);
 
     // Pass formData to the register mutation
     const res = await updateUser(formData).unwrap();
     dispatch(setCredentials({ ...res }));
     navigate("/");
   } catch (err) {
-    console.log(err);
     toast.error(err?.data?.message || err.error);
   }
 };

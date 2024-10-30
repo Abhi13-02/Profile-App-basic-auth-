@@ -1,5 +1,6 @@
 // backend/cloudinaryConfig.js
-import { v2 as cloudinary } from "cloudinary";
+import pkg from "cloudinary";
+const { v2: cloudinary } = pkg;
 
 import dotenv from "dotenv";
 dotenv.config(); // dont know why it was not working without this 

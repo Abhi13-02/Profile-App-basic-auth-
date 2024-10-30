@@ -51,13 +51,11 @@ const loginUser = asyncHandler(async( req, res) => {
 
   if(!user) {
     res.status(401);
-    console.log("please register first");
     throw new Error("please register first");
   }
 
   if (await user.matchPassword(password)) {
     generateToken(res, user._id);
-    console.log("login successful");
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -67,7 +65,6 @@ const loginUser = asyncHandler(async( req, res) => {
     });
   } else {
     res.status(401);
-    console.log("Invalid email or password");
     throw new Error("Invalid email or password");
   }
 });
@@ -104,7 +101,6 @@ const updateProfile = asyncHandler(async(req,res)=>{
   // getting back profile pic from cloudinary
   let pic; // if u do not pass pic then pic will be undefined and thus default pic will be shown
   if (req.file) {
-    console.log(req.file, "profile pic");
     pic = req.file.path;
   }
 

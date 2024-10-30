@@ -24,7 +24,6 @@ const AdminScreen = () => {
         toast.error(res.error.data.message); // using a try-catch block was not working as the response is being sent, you need to check the res.status and throw error manually
         return;
       }
-      console.log(res);
       toast.success(res.data.message);
     }
   };

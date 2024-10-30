@@ -7,6 +7,7 @@ import { logout } from "../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+import { toast } from "react-toastify";
 
 const HomeScreens = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -22,7 +23,7 @@ const HomeScreens = () => {
       dispatch(logout());
       navigate("/");
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
